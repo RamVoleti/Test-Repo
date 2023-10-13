@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            margin: 0;
+            padding: 0;
+            background-color: rosybrown;
+        }
+
+        * {
+            margin: 10px;
+            padding: 5px;
+            background-color: antiquewhite;
+        }
+
+        .projectName {
+            height: 30px;
+            width: 1000px;
+        }
+
+        .project-card {
+            border: 2px solid rgb(145, 213, 43);
+            margin: 10px;
+            padding: 10px;
+            text-align: left;
+            box-shadow: red;
+            background-color: goldenrod;
+            width: 300px;
+            height: 350px;
+        }
+
+        .ecom {
+            margin: 20px;
+            padding: 20px;
+            border: 3px solid yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 align="center">JCP</h1>
+    <div id='projectInput'>
+        <label for="projectName">Select Project : </label>
+        <select id="projectName" class="projectName">
+            <option value="TIRA">TIRA</option>
+            <option value="AJIO">AJIO</option>
+        </select>
+        <button onclick="createProject()">Open</button>
+        <div id="projectAttributes"></div>
+    </div>
+    <div class="ecom">
+        <input type="Enter Name" class="text" data-="Enter Name">
+    </div>
+
+    <script>
+        const projectDetails = {
+            TIRA: {
+                SIT: "http://www.tiraz0.de/",
+                UAT: "http://www.tiraz5.de/",
+                image: "https://assets.vogue.in/photos/64f1d7a98d0bf43267dd5d9b/3:4/w_2560%2Cc_limit/Kiara%2520Advani%2C%2520Kareena%2520Kapoor%2520Khan%2C%2520and%2520Suhana%2520Khan%2520at%2520the%2520launch%2520of%2520Tira's%2520campaign%2520"
+
+            },
+            AJIO: {
+                SIT: "https://ajio.ajioz0.de/",
+                UAT: "https://www.ajio.com/",
+                image: "https://assets.vogue.in/photos/64f1d7a98d0bf43267dd5d9b/3:4/w_2560%2Cc_limit/Kiara%2520Advani%2C%2520Kareena%2520Kapoor%2520Khan%2C%2520and%2520Suhana%2520Khan%2520at%2520the%2520launch%2520of%2520Tira's%2520campaign%2520"
+            }
+        }
+
+        function createProject() {
+            const projectName = document.getElementById('projectName').value;
+            if (projectName) {
+                console.log(projectName);
+            } else {
+                console.log("project not found");
+            }
+
+            const projectSelected = projectDetails[projectName];
+            if (projectSelected) {
+                console.log(projectSelected);
+                project(projectName, projectSelected);
+            } else {
+                console.log("no project found");
+            }
+        }
+
+        function project(projectName, projectSelected) {
+            const projectAttributesDiv = document.getElementById('projectAttributes');
+            const projectCard = document.createElement('div');
+            projectCard.className = 'project-card';
+            projectCard.innerHTML = `<h3>${projectName}</h3>
+                <p><img src="${projectSelected.image} width = "100" height ="200"></p> 
+                <a href="${projectSelected.SIT}">${projectName}-SIT</a>
+                <a href="${projectSelected.UAT}">${projectName}-UAT</a>
+                `
+            projectAttributesDiv.innerHTML = '';
+            projectAttributesDiv.appendChild(projectCard);
+        }
+    </script>
+</body>
+
+</html>

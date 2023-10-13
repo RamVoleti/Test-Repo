@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1{
+            background-color: #333;
+            color: white;
+
+padding: 10px;        }
+.currency_container{
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0,0,0,.4);
+}
+h2{
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Currency Convertor</h1>
+    <div class="currency_container">
+        <h2>USD to EUR</h2>
+        <input type="number" id="usdInput" placeholder="Enter USD">
+        <button onclick="convertToEur()">Convert</button>
+        <p id="resultEUR"></p>
+    </div>
+    <div class="currency_container">
+        <h2>EUR to USD</h2>
+        <input type="number" id="eurInput" placeholder="Enter EUR">
+        <!-- <button onclick="convertToUSD()">Convert</button> -->
+        <p id="resultUSD"></p>
+    </div>
+    <script>
+        const usdToEURRate=0.85;
+        const eurToUSDRate=1.18;
+        function convertToEur(){
+            console.log('dshgh');
+            // const usdAmount=document.getElementById('usdInput').value;
+            // console.log(usdAmount,typeof(usdAmount));
+
+            const usdAmount=parseFloat(document.getElementById('usdInput').value);
+            console.log(usdAmount,typeof(usdAmount));
+            if(!isNaN(usdAmount)){
+                const eurAmount=usdAmount*usdToEURRate;
+                document.getElementById('resultEUR').textContent=`${usdAmount.toFixed(3)} USD is ${eurAmount.toFixed(3)} EUR`;
+            }
+
+        }
+    </script>
+</body>
+</html>
