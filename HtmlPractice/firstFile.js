@@ -5,5 +5,9 @@ function test()
      console.log("hello");
      console.log(age);
      console.log("hello");
+      console.log(age);
+     console.log(age);
+      console.log(age);
+      console.log(age);
 }
 test();
